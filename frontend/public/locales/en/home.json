@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "title_prefix": "Your",
+    "title_highlight": "Next Journey Starts Here",
+    "subtitle": "Book premium bus tickets instantly. Travel in comfort with top-rated operators.",
+    "explore_routes": "Explore Routes",
+    "book_your_bus": "Book Your Bus",
+    "track_bus": "Track Your Bus"
+  },
+  "search": {
+    "leaving_from": "Leaving From",
+    "going_to": "Going To",
+    "journey_date": "Journey Date",
+    "seats": "Seats",
+    "class_type": "Class Type",
+    "search_buses": "Search Buses",
+    "safe_guarantee": "Safe and Verified Travel Guarantee",
+    "error_same_city": "Source and Destination cannot be the same!"
+  },
+  "stats": {
+    "happy_customers": "Happy Customers",
+    "active_routes": "Active Routes",
+    "verified_operators": "Verified Operators"
+  }
+}

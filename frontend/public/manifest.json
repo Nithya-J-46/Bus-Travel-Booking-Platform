@@ -1,0 +1,16 @@
+{
+  "short_name": "BusGo",
+  "name": "BusGo - Modern Bus Travel Booking",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#F8FAFC",
+  "display": "standalone",
+  "theme_color": "#6366F1",
+  "description": "Book luxury bus tickets, track live locations, and join a thriving travel community."
+}

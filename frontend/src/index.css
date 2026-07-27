@@ -1,0 +1,500 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-primary: #6366F1;
+  --color-primary-hover: #4F46E5;
+  --color-primary-light: rgba(99, 102, 241, 0.1);
+  
+  --color-secondary: #06B6D4;
+  --color-secondary-hover: #0891B2;
+  --color-secondary-light: rgba(6, 182, 212, 0.1);
+  
+  --color-accent: #10B981;
+  --color-accent-hover: #059669;
+  
+  --color-dark: #0F172A;
+  --color-light: #F8FAFC;
+  
+  --font-sans: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
+  --shadow-soft: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 5px 15px -5px rgba(0, 0, 0, 0.01);
+  --shadow-premium: 0 30px 60px -15px rgba(99, 102, 241, 0.08), 0 15px 30px -10px rgba(6, 182, 212, 0.06);
+  --shadow-glow: 0 0 30px 5px rgba(99, 102, 241, 0.25);
+  --shadow-glow-cyan: 0 0 30px 5px rgba(6, 182, 212, 0.25);
+
+  /* Theme variables mapped to Tailwind */
+  --color-theme-bg: var(--theme-bg);
+  --color-theme-surface: var(--theme-surface);
+  --color-theme-card: var(--theme-card);
+  --color-theme-text: var(--theme-text);
+  --color-theme-text-sec: var(--theme-text-sec);
+  --color-theme-border: var(--theme-border);
+}
+
+:root {
+  --theme-bg: #F8FAFC;
+  --theme-surface: #FFFFFF;
+  --theme-card: rgba(255, 255, 255, 0.85);
+  --theme-text: #0F172A;
+  --theme-text-sec: #475569;
+  --theme-border: #E2E8F0;
+  
+  /* Travel Hero SVG Variables (Light) */
+  --route-glow-1: #3b82f6;
+  --route-glow-2: #0ea5e9;
+  --route-glow-3: #10b981;
+  --bus-body-1: #2563eb;
+  --bus-body-2: #1d4ed8;
+  --bus-glow-1: #3b82f6;
+}
+
+html.dark {
+  --theme-bg: #020617;
+  --theme-surface: #0F172A;
+  --theme-card: rgba(15, 23, 42, 0.82);
+  --theme-text: #F8FAFC;
+  --theme-text-sec: #CBD5E1;
+  --theme-border: rgba(99, 102, 241, 0.25);
+  
+  /* Travel Hero SVG Variables (Dark) */
+  --route-glow-1: #818CF8;
+  --route-glow-2: #22D3EE;
+  --route-glow-3: #34D399;
+  --bus-body-1: #6366F1;
+  --bus-body-2: #4F46E5;
+  --bus-glow-1: #818CF8;
+}
+
+body {
+  background-color: var(--theme-bg);
+  font-family: var(--font-sans);
+  color: var(--theme-text);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Global smooth transition for theme change */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+html.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.glass-card-glow {
+  position: relative;
+}
+.glass-card-glow::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.35), rgba(6, 182, 212, 0.15), transparent, rgba(16, 185, 129, 0.25));
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Background Gradients Shifts */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-bg-shift {
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Shimmer Sweep Animation for Buttons */
+@keyframes shimmer {
+  0% { transform: translate(-100%, -50%) rotate(25deg); }
+  100% { transform: translate(100%, -50%) rotate(25deg); }
+}
+
+.shimmer-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 60px;
+  height: 250px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.6) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translate(-100%, -50%) rotate(25deg);
+  animation: shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Wheel Rotation Animation */
+@keyframes rotate-wheel {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.rotate-wheel {
+  animation: rotate-wheel 1.2s linear infinite;
+}
+
+/* Headlight Beam Pulsing */
+@keyframes headlight-glow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.45; }
+}
+
+.headlight-pulse {
+  animation: headlight-glow 2.5s ease-in-out infinite;
+}
+
+/* Cloud Glides */
+@keyframes glide-cloud {
+  0% { transform: translateX(-110px); }
+  100% { transform: translateX(950px); }
+}
+
+.glide-cloud-1 {
+  animation: glide-cloud 45s linear infinite;
+}
+
+.glide-cloud-2 {
+  animation: glide-cloud 60s linear infinite 15s;
+}
+
+/* Floating Animations */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(-3deg); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(1); opacity: 0.15; }
+  50% { transform: scale(1.08); opacity: 0.25; }
+}
+
+@keyframes pulse-fast {
+  0%, 100% { transform: scale(1); opacity: 0.2; }
+  50% { transform: scale(1.12); opacity: 0.35; }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+@keyframes particle-up {
+  0% { transform: translateY(120vh) scale(0.4); opacity: 0; }
+  20% { opacity: 0.5; }
+  80% { opacity: 0.5; }
+  100% { transform: translateY(-10vh) scale(1.1); opacity: 0; }
+}
+
+/* CSS Utilities classes */
+.animate-float-1 { animation: float-slow 6s ease-in-out infinite; }
+.animate-float-2 { animation: float-medium 8s ease-in-out infinite; }
+.animate-float-3 { animation: float-slow 10s ease-in-out infinite 1s; }
+
+.animate-blob-1 { animation: pulse-slow 10s ease-in-out infinite; }
+.animate-blob-2 { animation: pulse-slow 12s ease-in-out infinite 2s; }
+.animate-blob-3 { animation: pulse-fast 7s ease-in-out infinite; }
+
+.animate-route-line {
+  stroke-dasharray: 8, 8;
+  animation: dash 1.2s linear infinite;
+}
+
+.animate-particle-1 { animation: particle-up 14s linear infinite; }
+.animate-particle-2 { animation: particle-up 18s linear infinite 4s; }
+.animate-particle-3 { animation: particle-up 12s linear infinite 8s; }
+.animate-particle-4 { animation: particle-up 20s linear infinite 2s; }
+
+/* Custom Inputs on Dark mode */
+html.dark input {
+  background-color: rgba(15, 23, 42, 0.4);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+html.dark input:-webkit-autofill,
+html.dark input:-webkit-autofill:hover, 
+html.dark input:-webkit-autofill:focus, 
+html.dark input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #131a26 inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: #0F172A !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+html.dark label {
+  color: #94A3B8;
+}
+
+/* Success Checkmark Draw Animation */
+@keyframes checkmark-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #10B981;
+  fill: none;
+  animation: checkmark-draw 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: checkmark-draw 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+}
+
+/* Slow Spin Animations */
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spin-slow {
+  animation: spin-slow 25s linear infinite;
+}
+
+.spin-slow-reverse {
+  animation: spin-slow 35s linear infinite reverse;
+}
+
+/* Shimmer delayed keyframes */
+@keyframes shimmer-delayed {
+  0% { transform: translate(-100%, -50%) rotate(25deg); }
+  25% { transform: translate(100%, -50%) rotate(25deg); }
+  100% { transform: translate(100%, -50%) rotate(25deg); }
+}
+
+.shimmer-delayed-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 60px;
+  height: 250px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.25) 20%,
+    rgba(255, 255, 255, 0.6) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translate(-100%, -50%) rotate(25deg);
+  animation: shimmer-delayed 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Button Ripple click animation */
+@keyframes ripple {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.animate-ripple {
+  animation: ripple 0.65s ease-out;
+}
+
+/* Dark mode placeholder helper */
+html.dark input::placeholder {
+  color: #cbd5e1;
+  opacity: 0.85;
+}
+
+/* Subtle animated border glow */
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(99, 102, 241, 0.2); }
+  50% { border-color: rgba(6, 182, 212, 0.4); }
+}
+
+.animate-border-glow {
+  animation: borderGlow 6s linear infinite;
+}
+
+/* Advanced Glassmorphism and shadow layers */
+.glass-card-premium {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 10px 20px -10px rgba(99, 102, 241, 0.05),
+    0 30px 60px -15px rgba(0, 0, 0, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+html.dark .glass-card-premium {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 0 50px rgba(99, 102, 241, 0.15),
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Custom Float Rotate Animations */
+@keyframes float-rotate-slow-1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(8deg); }
+}
+@keyframes float-rotate-slow-2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-24px) rotate(-10deg); }
+}
+@keyframes float-rotate-slow-3 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(6deg); }
+}
+
+.animate-float-rotate-1 { animation: float-rotate-slow-1 6s ease-in-out infinite; }
+.animate-float-rotate-2 { animation: float-rotate-slow-2 8s ease-in-out infinite; }
+.animate-float-rotate-3 { animation: float-rotate-slow-3 10s ease-in-out infinite 1s; }
+
+/* Continuous operator marquee ticker */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker 35s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+/* Custom Checkbox Animation */
+@keyframes check-bounce {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+input[type="checkbox"]:checked {
+  animation: check-bounce 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Accessibility: Focus rings */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+
+/* Fade In Up Entry Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hide-for-pdf { display: none !important; }
+
+@layer components {
+  /* Standardized Card */
+  .busgo-card {
+    @apply bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-xl transition-all duration-300;
+  }
+  .busgo-card-hover {
+    @apply hover:shadow-2xl hover:-translate-y-1 hover:border-indigo-500/30;
+  }
+  
+  /* Standardized Form Input */
+  .busgo-input {
+    @apply w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all;
+  }
+  
+  /* Standardized Badge/Chip */
+  .busgo-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider;
+  }
+  .busgo-badge-primary {
+    @apply bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-800/50;
+  }
+  .busgo-badge-success {
+    @apply bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-800/50;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

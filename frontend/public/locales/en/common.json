@@ -1,0 +1,37 @@
+{
+  "navbar": {
+    "my_bookings": "My Bookings",
+    "profile": "Profile",
+    "rewards": "Rewards",
+    "help": "Help",
+    "notifications": "Notifications",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register",
+    "community": "Community"
+  },
+  "footer": {
+    "description": "Premium bus travel booking platform offering reliable, comfortable, and affordable journeys. Real-time tracking and 24/7 support.",
+    "quick_links": "Quick Links",
+    "home": "Home",
+    "search": "Search Buses",
+    "routes": "Routes",
+    "offers": "Offers",
+    "community": "Community",
+    "contact": "Contact",
+    "company": "Company",
+    "about_us": "About Us",
+    "careers": "Careers",
+    "blog": "Blog",
+    "privacy_policy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "contact_us": "Contact Us",
+    "copyright": "© {{year}} BusGo. All rights reserved."
+  },
+  "actions": {
+    "search": "Search",
+    "book_now": "Book Now",
+    "cancel": "Cancel",
+    "save": "Save"
+  }
+}

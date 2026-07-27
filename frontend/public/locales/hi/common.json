@@ -1,0 +1,20 @@
+{
+  "navbar": {
+    "login": "लॉग इन करें",
+    "register": "रजिस्टर करें",
+    "my_bookings": "मेरी बुकिंग",
+    "profile": "प्रोफ़ाइल",
+    "community": "समुदाय",
+    "rewards": "इनाम",
+    "help": "सहायता केंद्र",
+    "logout": "लॉग आउट",
+    "notifications": "सूचनाएँ"
+  },
+  "footer": {
+    "routes": "मार्ग"
+  },
+  "stats": {
+    "happy_customers": "संतुष्ट ग्राहक",
+    "cities_connected": "शहर जुड़े"
+  }
+}
