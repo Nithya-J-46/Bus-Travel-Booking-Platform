@@ -4,7 +4,7 @@ import axios from 'axios';
 const AuthContext = createContext(null);
 
 export const api = axios.create({
-  baseURL: 'http://localhost:8000/api/auth',
+  baseURL: 'https://bus-travel-booking-platform-1.onrender.com/api/auth',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -51,27 +51,27 @@ export const AuthProvider = ({ children }) => {
         const originalRequest = error.config;
         if (error.response?.status === 401 && !originalRequest._retry) {
           originalRequest._retry = true;
-          
+
           const remember = !!localStorage.getItem('refresh_token');
-          const refreshToken = remember 
-            ? localStorage.getItem('refresh_token') 
+          const refreshToken = remember
+            ? localStorage.getItem('refresh_token')
             : sessionStorage.getItem('refresh_token');
 
           if (refreshToken) {
             try {
               // Call simple-jwt refresh endpoint
-              const response = await axios.post('http://localhost:8000/api/auth/token/refresh/', {
+              const response = await axios.post('https://bus-travel-booking-platform-1.onrender.com/api/auth/token/refresh/', {
                 refresh: refreshToken,
               });
               const newAccessToken = response.data.access;
-              
+
               setToken(newAccessToken);
               if (remember) {
                 localStorage.setItem('access_token', newAccessToken);
               } else {
                 sessionStorage.setItem('access_token', newAccessToken);
               }
-              
+
               originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
               return api(originalRequest);
             } catch (refreshError) {
@@ -93,7 +93,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password, rememberMe) => {
     const response = await api.post('/login/', { email, password });
     const { access, refresh, user: userData } = response.data;
-    
+
     setToken(access);
     setUser(userData);
 
@@ -119,8 +119,8 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     const remember = !!localStorage.getItem('refresh_token');
-    const refreshToken = remember 
-      ? localStorage.getItem('refresh_token') 
+    const refreshToken = remember
+      ? localStorage.getItem('refresh_token')
       : sessionStorage.getItem('refresh_token');
 
     try {
@@ -149,11 +149,11 @@ export const AuthProvider = ({ children }) => {
     });
     const updatedUser = response.data.user;
     setUser(updatedUser);
-    
+
     const remember = !!localStorage.getItem('access_token');
     const storage = remember ? localStorage : sessionStorage;
     storage.setItem('user', JSON.stringify(updatedUser));
-    
+
     return response.data;
   };
 

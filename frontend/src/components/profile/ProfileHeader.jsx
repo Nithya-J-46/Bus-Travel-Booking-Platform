@@ -43,7 +43,7 @@ const ProfileHeader = ({ user, updateProfile }) => {
               <img loading="lazy" src={avatarPreview} alt="Preview" className="w-full h-full object-cover" />
             ) : user?.avatar ? (
               <img
-                src={user.avatar.startsWith('http') ? user.avatar : `http://localhost:8000${user.avatar}`}
+                src={user.avatar.startsWith('http') ? user.avatar : `https://bus-travel-booking-platform-1.onrender.com${user.avatar}`}
                 alt={user.full_name}
                 className="w-full h-full object-cover"
               />

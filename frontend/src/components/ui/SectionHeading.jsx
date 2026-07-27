@@ -28,8 +28,8 @@ const SectionHeading = ({
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`flex ${isCenter ? 'justify-center' : 'justify-start'} mb-3`}
       >
-        <span className="inline-flex items-center gap-2 h-[42px] md:h-[48px] px-6 md:px-8 rounded-full font-bold text-[13px] md:text-[14px] uppercase tracking-[0.12em] bg-gradient-to-br from-[#EEF4FF] to-[#E0F2FE] border border-[rgba(79,70,229,0.18)] text-[#4F46E5] shadow-[0_8px_24px_rgba(79,70,229,0.12)] dark:bg-slate-900/40 dark:backdrop-blur-md dark:border-blue-500/30 dark:shadow-[0_0_20px_rgba(59,130,246,0.15)] dark:text-white transition-all duration-300">
-          {Icon && <Icon className="w-4 h-4 md:w-5 md:h-5 text-[#4F46E5] dark:text-blue-400" />}
+        <span className="inline-flex items-center gap-2 h-[42px] md:h-[48px] px-6 md:px-8 rounded-full font-bold text-[13px] md:text-[14px] uppercase tracking-[0.12em] bg-gradient-to-br from-[#EEF4FF] to-[#E0F2FE] border border-[rgba(79,70,229,0.18)] text-[#4F46E5] shadow-[0_8px_24px_rgba(79,70,229,0.12)] dark:bg-[rgba(30,41,59,0.8)] dark:backdrop-blur-md dark:border-[#60A5FA] dark:shadow-[0_0_20px_rgba(59,130,246,0.25)] dark:text-white transition-all duration-300">
+          {Icon && <Icon className="w-4 h-4 md:w-5 md:h-5 text-[#4F46E5] dark:text-[#60A5FA]" />}
           {badge}
         </span>
       </motion.div>
